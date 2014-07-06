@@ -18,7 +18,7 @@ class Cache
 		}
 	}
 
-	static public function set($key, $value){
+	static public function set($key, $value, Media_ConnectParams $connectParams){
 		if($connectParams instanceOf Media_ConnectParams_Memcache){
 			$memcache = Media::memcacheConnect($connectParams);
 			return $memcache->set($connectParams->prefix . $key, $value);
@@ -32,7 +32,7 @@ class Cache
 		}
 	}
 
-	static public function del($key){
+	static public function del($key, Media_ConnectParams $connectParams){
 		if($connectParams instanceOf Media_ConnectParams_Memcache){
 			$memcache = Media::memcacheConnect($connectParams);
 			return $memcache->delete($connectParams->prefix . $key);
